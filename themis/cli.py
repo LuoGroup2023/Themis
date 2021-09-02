@@ -95,6 +95,9 @@ optional arguments:
                         further attempts. (default: False)
 """
 
+PROFILE_USAGE = """\
+themis profile [-h] -r [...] [--single]--db-prefix DB_PREFIX -i REF_INFO -o [-t] [-k]
+"""
 
 def subcmd_build_custom(argv):
     if any(a in ("-h", "--help") for a in argv):
@@ -136,21 +139,26 @@ def build_parser():
                          help="Arguments passed directly to 'ganon build-cutstom'.")
 
 
-    p_prof = sub.add_parser("profile", help="Profile reads against custom databases.")
-    p_prof.add_argument("-r", "--reads", action="append", required=True,
+    #p_prof = sub.add_parser("profile", help="Profile reads against custom databases.")
+    p_prof = sub.add_parser(
+        "profile",
+        help="Profile reads against custom databases.",
+        usage=PROFILE_USAGE,                         
+    )
+    p_prof.add_argument("-r", "--reads", action="append", required=True,metavar="",
                         help=("For paired-end data, specify mates consecutively: -r R1.fq -r R2.fq. "
                         "For single-end data, use --single and give one -r per file. "))
     p_prof.add_argument("--single", action="store_true", help="Treat input as single-end reads. ")
-    p_prof.add_argument("--db-prefix", required=True,
+    p_prof.add_argument("-d", "--db-prefix", required=True,metavar="",
                         help="Database input prefix.")
-    p_prof.add_argument("--ref-info", required=True,
+    p_prof.add_argument("-i", "--ref-info", required=True,metavar="",
                         help=("Tab-separated reference metadata file. Fields: "
                         "strain_name <tab> strain_taxid <tab> species_taxid "
                         "<tab> species_name <tab> genome_path. "
                         "strain_name and strain_taxid must be unique."))
-    p_prof.add_argument("--out", required=True, help="Output directory for profiling results.")
-    p_prof.add_argument("--threads", type=int, default=8, help="Number of threads.")
-    p_prof.add_argument("-k", "--kmer", type=int, default=31, help="k-mer size used in the ccDBG-based profiling step.")
+    p_prof.add_argument("-o", "--output", required=True, metavar="", dest="out", help="Output directory for profiling results.")
+    p_prof.add_argument("-t", "--threads", type=int, default=8, metavar="", help="Number of threads.")
+    p_prof.add_argument("-k", "--kmer-size", dest="kmer",type=int, default=31, metavar="", help="k-mer size used in the ccDBG-based profiling step.")
 
     return p
 
