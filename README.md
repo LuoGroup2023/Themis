@@ -1,7 +1,4 @@
 # Themis
-<<<<<<< HEAD
-Themis is a fast and robust metagenomic profiler that achieves high accuracy across ultra-low to high sequencing depths.
-=======
 
 **Themis** is a metagenomic profiling tool that integrates a customized version of **ganon** and **ggcat** with a reproducible, automatic post-processing pipeline.
 
@@ -44,4 +41,3 @@ Themis is released under the **GPL-3.0** license, and is compatible with ganon a
 
 ```bash
 mamba install -c <your-conda-channel> themis
->>>>>>> 057bdf5 (Themis v0.1.0: initial public release)
