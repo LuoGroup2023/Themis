@@ -55,11 +55,11 @@ def read_ref_mapping(ref_info_file: Path):
         # 
         cols = {str(name).strip(): i for i, name in enumerate(header)}
         try:
-            i_genome = cols["genome_ID"]
+            i_genome = cols["strain_name"]
             i_species = cols["species_taxid"]
-            i_idpath = cols["id"]
+            i_idpath = cols["genome_path"]
         except KeyError as e:
-            sys.exit(f"[Error] Ref information file is missing a required column: {e} (Required: genome_ID, species_taxid, id)")
+            sys.exit(f"[Error] Ref information file is missing a required column: {e} (Required: strain_name, species_taxid, genome_path)")
 
         for row in reader:
             if not row or len(row) <= i_idpath:

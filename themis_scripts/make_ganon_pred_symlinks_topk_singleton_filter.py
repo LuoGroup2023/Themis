@@ -50,13 +50,13 @@ def read_ref_mapping(ref_info_file: Path):
             sys.exit("[Error] The Ref information file is empty or missing a header.")
 
         cols = {name: i for i, name in enumerate(header)}
-        for need in ("genome_ID", "species_taxid", "id"):
+        for need in ("strain_name", "species_taxid", "genome_path"):
             if need not in cols:
                 sys.exit(f"[Error] Ref information file is missing a necessary column:：{need}")
 
-        i_genome = cols["genome_ID"]
+        i_genome = cols["strain_name"]
         i_species = cols["species_taxid"]
-        i_idpath = cols["id"]
+        i_idpath = cols["genome_path"]
 
         mapping = {}
         for row in reader:
@@ -225,7 +225,7 @@ def parse_args():
         )
     )
     p.add_argument("--ref_info", required=True,
-                   help="Ref information table path (must include genome_ID, species_taxid, id columns).")
+                   help="Ref information table path (must include strain_name, species_taxid, genome_path columns).")
     p.add_argument("--ganon_species", required=True,
                    help="The path to ganon_species_abundance.txt.")
     p.add_argument("--ganon_strain", required=True,

@@ -91,7 +91,7 @@ def run(counts_file,
         mapping_file,
         output_file,
         species_col="species_taxid",
-        path_col="id",
+        path_col="genome_path",
         skip_missing_genomes=True):
     
 
@@ -188,7 +188,7 @@ def parse_args():
     )
     ap.add_argument(
         "-m", "--mapping", required=True,
-        help="Mapping TSV with header; needs columns 'species_taxid' and 'id' (genome path)."
+        help="Mapping TSV with header; needs columns 'species_taxid' and 'genome_path'."
     )
     ap.add_argument(
         "-o", "--output", required=True,
@@ -199,8 +199,8 @@ def parse_args():
         help="Column name for species id in mapping file (default: species_taxid)."
     )
     ap.add_argument(
-        "--path-col", default="id",
-        help="Column name for genome path in mapping file (default: id)."
+        "--path-col", default="genome_path",
+        help="Column name for genome path in mapping file (default: genome_path)."
     )
     ap.add_argument(
         "--skip-missing-genomes", action="store_true",
