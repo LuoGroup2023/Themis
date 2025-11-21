@@ -58,9 +58,8 @@ Due to the large size of the reference pangenome we used for testing, we provide
 themis -r read1.fq -r $read2.fq --db-prefix themisDB --ref-info genomes_info.txt --out themis_query --threads 64 -k 31
 # long read
 themis -r $reads.fq --single --db-prefix themisDB --ref-info genomes_info.txt --out themis_query --threads 64 -k 31
-
 ```
-genomes_info.txt is a tab-separated metadata table with a header line. The columns are, in order: strain\_name, strain_taxid, species_taxid, species_name, and genome_path, where strain_name and strain_taxid must be unique and genome_path gives the absolute path to the corresponding genome FASTA file.
+genomes_info.txt is a tab-separated metadata table with a header line. The columns are, in order: strain_name, strain_taxid, species_taxid, species_name, and genome_path, where strain_name and strain_taxid must be unique and genome_path gives the absolute path to the corresponding genome FASTA file.
 
 
 
