@@ -157,7 +157,7 @@ def run(ref_info,
     out_tsv_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_tsv_path, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter="\t")
-        writer.writerow(["species_taxid", "strain_taxid", "new_strain_taxid", "id"])
+        writer.writerow(["species_taxid", "strain_taxid", "new_strain_taxid", "genome_path"])
         writer.writerows(records)
 
     # No more symbolic links will be created; only one prompt will be given (if the caller provides tmp_dir).

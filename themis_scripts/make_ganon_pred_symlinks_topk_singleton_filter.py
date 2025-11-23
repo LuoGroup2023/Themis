@@ -196,7 +196,7 @@ def run(ref_info,
     out_tsv_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_tsv_path, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, delimiter="\t")
-        w.writerow(["species_taxid", "strain_taxid", "new_strain_taxid", "id"])
+        w.writerow(["species_taxid", "strain_taxid", "new_strain_taxid", "genome_path"])
         w.writerows(selected_records)
 
     # 
