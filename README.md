@@ -45,7 +45,7 @@ themis -h
 ## Quick start
 * **1-build-custom-reference-database** 
 ```
-themis build-custom  --input-file input_genomes.txt --taxonomy-files nodes.dmp names.dmp --db-prefix themisDB --level strain -t $threads -k 19
+themis build-custom  --input-file input_genomes.txt --taxonomy-files nodes.dmp names.dmp --db-prefix themisDB --level strain -t $threads -k 19 -w 51
 ```
 input_genomes.txt is a headerless, tab-separated manifest where each line contains (1) the absolute path to a genome FASTA file, (2) its strain\_name, and (3) the corresponding strain-level NCBI taxid.
 
@@ -61,7 +61,21 @@ themis -r $reads.fq --single --db-prefix themisDB --ref-info genomes_info.txt --
 ```
 genomes_info.txt is a tab-separated metadata table with a header line. The columns are, in order: strain_name, strain_taxid, species_taxid, species_name, and genome_path, where strain_name and strain_taxid must be unique and genome_path gives the absolute path to the corresponding genome FASTA file.
 
-
-
-
-
+Output file:species_abundance.txt
+```
+Taxonomic_ID    Relative_Abundance
+12345           0.0012
+...
+```
+Output file:tax_profile.tre
+```
+no rank 131567  1|131567        cellular organisms      1.0000000000000000
+superkingdom    2       1|131567|2      Bacteria        1.0000000000000000
+phylum  1224    1|131567|2|1224 Pseudomonadota  0.37078199931442135
+class   1236    1|131567|2|1224|1236    Gammaproteobacteria     0.30406830971011906
+order   135614  1|131567|2|1224|1236|135614     Xanthomonadales 0.006280138828970609
+family  32033   1|131567|2|1224|1236|135614|32033       Xanthomonadaceae        0.006280138828970609
+genus   68      1|131567|2|1224|1236|135614|32033|68    Lysobacter      0.006280138828970609
+species 69      1|131567|2|1224|1236|135614|32033|68|69 Lysobacter enzymogenes  0.006280138828970609
+...
+```
