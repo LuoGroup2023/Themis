@@ -13,8 +13,6 @@
 - [Installation](#installation)
 - [Features](#Features)
 - [Quick start](#quick-start)
-  - [1. Build custom reference databases](#1-build-custom-reference-database)
-  - [2. Profile reads against custom databases](#2-profile)
 <!-- - [Input files](#input-files)
 - [Output files](#output-files)
 - [Command reference](#command-reference)
