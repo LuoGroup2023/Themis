@@ -29,6 +29,8 @@ Themis is a fast and robust metagenomic profiler that achieves high accuracy acr
 
 
 ```
+conda create -n themis_env
+conda activate themis_env
 conda install -c bioconda -c conda-forge themis
 ## Run themis.
 themis -h
