@@ -169,14 +169,14 @@ def run_paired(reads, db_prefix, out_prefix,
         output=str(final_abundance),
     )
     # 9) 
-    _ts("ganon_tax_profile_rebuild").rebuild_tax_profile_with_species_abundance(
+    _ts("tax_profile_rebuild").rebuild_tax_profile_with_species_abundance(
         tax_profile=str(ganon_tre),
         species_abundance=str(final_abundance),
         out_path=None,          # default -> <final_abundance_dir>/tax_profile.tre
         drop_root=True,
         drop_strain=True,
     )
-    _ts("ganon_tax_profile_rebuild").add_header_to_species_abundance(
+    _ts("tax_profile_rebuild").add_header_to_species_abundance(
         species_abundance=str(final_abundance),
         header1="Species_TaxID",
         header2="Relative_Abundance",
@@ -278,7 +278,7 @@ def run_single(reads, db_prefix, out_prefix,
     )
     # 9) 
     # 8.1) rebuild tax_profile into the SAME dir as final species_abundance
-    _ts("ganon_tax_profile_rebuild").rebuild_tax_profile_with_species_abundance(
+    _ts("tax_profile_rebuild").rebuild_tax_profile_with_species_abundance(
         tax_profile=str(ganon_tre),
         species_abundance=str(final_abundance),
         out_path=None,
@@ -287,7 +287,7 @@ def run_single(reads, db_prefix, out_prefix,
     )
 
     # 8.2) add header to final species_abundance.txt
-    _ts("ganon_tax_profile_rebuild").add_header_to_species_abundance(
+    _ts("tax_profile_rebuild").add_header_to_species_abundance(
         species_abundance=str(final_abundance),
         header1="Taxonomic_ID",
         header2="Relative_Abundance",
